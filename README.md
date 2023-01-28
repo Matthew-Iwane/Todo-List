@@ -12,7 +12,8 @@
 
 - React
 - Tailwind
-- MongoDB
+- React-Icons
+- React Hooks
 
 
 ## Contact
@@ -22,5 +23,4 @@
 
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [Tailwind Documentation](https://tailwindcss.com/docs/guides/create-react-app)
-- [MongoDB](https://www.mongodb.com/docs/drivers/node/current/)
 - [Google Fonts](https://fonts.google.com/featured)
