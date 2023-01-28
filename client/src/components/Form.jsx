@@ -63,7 +63,7 @@ export const Form = () => {
                 type="submit"
                 className='bg-red-400 text-gray-100 py-3 px-4 rounded-md font-bold hover:bg-red-600'
             >
-                {editTodo ? "EDIT" : "Add"}
+                {editTodo ? "CHANGE" : "Add"}
             </button>
         </form>
         <TodoList 
