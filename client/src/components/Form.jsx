@@ -1,14 +1,18 @@
-import React from 'react'
+import { useState } from 'react'
 import {v4 as uuidv4} from 'uuid'
+import { TodoList } from './TodoList.jsx'
 
-export const Form = ({userInput, setUserInput, todos, setToDos }) => {
+
+export const Form = () => {
+    const [userInput, setUserInput] = useState("");
+    const [todos, setToDos] = useState([])
 
     const onInputChange = (event) => {
         setUserInput(event.target.value);
     }
 
     const onFormSubmit = (event) => {
-        event.preventdefault();
+        event.preventDefault();
         setToDos([...todos, {id:uuidv4(), title:userInput, completed: false}]);
         setUserInput("")
     }
@@ -23,7 +27,7 @@ export const Form = ({userInput, setUserInput, todos, setToDos }) => {
                 placeholder="Enter a todo: " 
                 className='rounded m-3 py-3 px-4 border-none cursor-pointer text-black'
                 value={userInput}
-                required
+                required //ensures that the user has to put an input
                 onChange={onInputChange}
 
             >
@@ -35,6 +39,7 @@ export const Form = ({userInput, setUserInput, todos, setToDos }) => {
                 Add
             </button>
         </form>
+        <TodoList todos={todos} setToDos={setToDos}/>
     </div>
   )
 }
