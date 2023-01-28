@@ -5,7 +5,30 @@ import { GoTrashcan } from 'react-icons/go'
 
 
 
-export const TodoList = ({ todos, setTodos }) => {
+export const TodoList = ({ todos, setToDos, setEditToDo }) => {
+
+    const handleComplete = (todo) => {
+        setToDos(
+            todo.map((item) => {
+                if (item.id === todo.id) {
+                    return{...item, completed: item.completed}
+                }
+                return item;
+            })
+        )
+    }
+
+    const handleEdit = ({ id }) => {
+        const findTodo = todos.find((todo) => todo.id === id)
+        setEditToDo(findTodo);
+    }
+
+
+    const handleDelete = ({ id }) => {
+        setToDos(todos.filter((todo) => todo.id !== id));
+    }
+
+
   return (
     <div className='text-gray-700 w-full flex flex-col'>
         {todos.map((todo) => (
@@ -25,14 +48,21 @@ export const TodoList = ({ todos, setTodos }) => {
                         flex flex-wrap break-normal
                     '
                 />  
+
                 <div className='flex gap-2'>
-                    <button className='ml-2 hover:text-gray-800'>
+                    <button 
+                        onClick={() => handleComplete(todo)}
+                        className='ml-2 hover:text-gray-800'>
                         <ImCheckmark2 size={25}/>
                     </button>
-                    <button className='hover:text-gray-800'>
+                    <button 
+                        onClick={() => handleEdit(todo)}
+                        className='hover:text-gray-800'>
                         <BsPencilSquare size={25}/>
                     </button>
-                    <button className='hover:text-gray-800'>
+                    <button 
+                        onClick={() => handleDelete(todo)}
+                        className='hover:text-gray-800'>
                         <GoTrashcan size={25}/>
                     </button>
                 </div>
